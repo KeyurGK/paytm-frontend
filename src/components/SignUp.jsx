@@ -24,6 +24,7 @@ const SignUp = () => {
   };
   const handleFormSubmit = () => {
     const errorData = schema.validate(formData);
+   
     if (errorData) {
       alert("Error");
     } else {
@@ -75,7 +76,7 @@ const SignUp = () => {
         />
         <button type="submit" className="bg-slate-800 text-white w-[80vw] lg:w-[20vw] mt-5 p-2">Sign Up</button>
           </form>
-          <p className="text-center mt-4">Already have an account? Login</p>
+          <p className="text-center mt-4">Already have an account? <span onClick={()=>navigate("/sign-in")} className="cursor-pointer text-blue-400">Login</span></p>
             </div>
             </div>
   );
