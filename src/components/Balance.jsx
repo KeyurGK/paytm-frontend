@@ -6,16 +6,33 @@ const Balance = ({ getCookie }) => {
   const [balance, setBalance] = useState(0);
   const token = getCookie("acc_token");
   useEffect(() => {
-    axios
-      .get(`${API_KEY}/account/balance`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setBalance(res.data.balance);       
-      },[]);
-  });
+    // Define fetchBalance as a function
+    const fetchBalance = () => {
+      axios
+        .get(`${API_KEY}/account/balance`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setBalance(res.data.balance);
+        })
+        .catch((err) => {
+          console.error("Error fetching balance:", err);
+        });
+    };
+
+    // Initial call to fetch balance
+    fetchBalance();
+
+    // Set up the interval to call fetchBalance every 10 seconds
+    const interval = setInterval(() => {
+      fetchBalance();
+    }, 10 * 1000);
+
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, [API_KEY, token]); 
   return (
     <div className="border mt-5  h-[10vh] lg:w-[70vw] flex items-center justify-center ">
       <p>Current Balance : {balance}</p>
