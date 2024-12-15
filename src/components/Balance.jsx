@@ -35,7 +35,7 @@ const Balance = ({ getCookie }) => {
   }, []); 
   return (
     <div className="border mt-5  h-[10vh] lg:w-[70vw] flex items-center justify-center ">
-      <p>Current Balance : {balance}</p>
+      <p>Balance : {balance}</p>
     </div>
   );
 };
