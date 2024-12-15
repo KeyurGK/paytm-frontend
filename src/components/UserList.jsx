@@ -11,7 +11,7 @@ const UserList = ({ getCookie }) => {
   const bearerToken = getCookie("acc_token");
   useEffect(() => {
     try {
-      axios.get(`${API_KEY}/user/bulk`).then((response) => {
+      axios.get(`${API_KEY}/api/v1/user/bulk`).then((response) => {
         setUserList(response.data.user);
       });
     } catch (error) {
@@ -29,7 +29,7 @@ const UserList = ({ getCookie }) => {
   const handleTransaction = () => {
     axios
       .post(
-        `${API_KEY}/account/transfer`,
+        `${API_KEY}/api/v1/account/transfer`,
         {
           amount: enteredAmount,
           to: selectedUser._id,

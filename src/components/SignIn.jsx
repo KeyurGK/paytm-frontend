@@ -35,7 +35,7 @@ const SignIn = () => {
       
       // API request to sign in
       const signInResponse = await axios.post(
-        `${API_KEY}/user/signin`,
+        `${API_KEY}/api/v1/user/signin`,
         {
           username: formData.emailId,
           password: formData.password,

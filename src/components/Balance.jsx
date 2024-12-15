@@ -9,7 +9,7 @@ const Balance = ({ getCookie }) => {
     // Define fetchBalance as a function
     const fetchBalance = () => {
       axios
-        .get(`${API_KEY}/account/balance`, {
+        .get(`${API_KEY}/api/v1/account/balance`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -32,7 +32,7 @@ const Balance = ({ getCookie }) => {
 
     // Cleanup the interval when the component unmounts
     return () => clearInterval(interval);
-  }, [API_KEY, token]); 
+  }, []); 
   return (
     <div className="border mt-5  h-[10vh] lg:w-[70vw] flex items-center justify-center ">
       <p>Current Balance : {balance}</p>
