@@ -63,6 +63,9 @@ const SignIn = () => {
       }
     }
   };
+  const handleNavigate = () => {
+    navigate("/");
+  };
 
   return (
     <div className="bg-slate-800 h-screen flex justify-center items-center">
@@ -99,7 +102,7 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
-        <p className="text-center mt-4">Don't have an account? <span onClick={navigate('/')} className="text-blue-400 cursor-pointer">Sign Up</span></p>
+        <p className="text-center mt-4">Don't have an account? <span onClick={handleNavigate} className="text-blue-400 cursor-pointer">Sign Up</span></p>
       </div>
     </div>
   );
